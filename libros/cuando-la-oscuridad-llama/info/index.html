@@ -19,6 +19,7 @@
 
   <main class="libro-info">
     <h1 id="title">Cargando título...</h1>
+
     <div class="info-container">
       <img id="cover" class="cover" src="" alt="Portada del libro" />
       <div class="datos">
@@ -26,18 +27,20 @@
         <p class="fecha" id="fecha"></p>
         <p class="generos" id="generos"></p>
         <p class="descripcion" id="descripcion"></p>
-        <section class="reseñas">
-  <h2>Reseñas de lectores</h2>
-  <form id="form-reseña">
-    <input type="text" id="nombre" placeholder="Tu nombre" required />
-    <textarea id="texto" placeholder="Escribe tu reseña..." required></textarea>
-    <button type="submit">Enviar reseña</button>
-  </form>
-  <div id="lista-reseñas"></div>
-</section>
-
       </div>
     </div>
+
+    <!-- Sección de reseñas -->
+    <section class="reseñas">
+      <h2>Reseñas de lectores</h2>
+      <form id="form-reseña">
+        <input type="text" id="nombre" placeholder="Tu nombre" required />
+        <textarea id="texto" placeholder="Escribe tu reseña..." required></textarea>
+        <button type="submit">Enviar reseña</button>
+      </form>
+      <div id="lista-reseñas"></div>
+    </section>
+
     <div id="capitulos-container" class="capitulos-container"></div>
   </main>
 
