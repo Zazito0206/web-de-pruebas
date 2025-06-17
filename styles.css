@@ -546,3 +546,48 @@ body.dark-mode {
   border: 2px solid #0a3d62;
 }
 
+/* --- menu al tocar la foto ---*/
+/* Menú desplegable usuario */
+.dropdown {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: var(--color-nav-fondo);
+  color: var(--color-texto);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  min-width: 180px;
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown li {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown li button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dropdown.hidden {
+  display: none;
+}
+
