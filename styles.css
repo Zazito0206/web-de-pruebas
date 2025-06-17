@@ -562,3 +562,33 @@ body.dark-mode {
   display: block;
 }
 
+/* --- modo oscuro para dropdown --- */
+body.dark-mode .dropdown-menu {
+  background: #1f1f1f;
+  border: 1px solid #444;
+  color: #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .dropdown-menu a,
+body.dark-mode .dropdown-menu button {
+  color: #ddd;
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: 'Montserrat', Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+body.dark-mode .dropdown-menu a:hover,
+body.dark-mode .dropdown-menu button:hover {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .dropdown-menu hr {
+  border-color: #444;
+}
