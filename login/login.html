@@ -16,17 +16,15 @@
       <button type="submit">Entrar</button>
     </form>
 
-<button type="button" id="google-login">Entrar con Google</button>
-<button type="button" id="facebook-login">Entrar con Facebook</button>
-
+    <button type="button" id="google-login">Entrar con Google</button>
+    <button type="button" id="facebook-login">Entrar con Facebook</button>
 
     <p>¿No tienes cuenta? <a href="#" id="registrarse">Regístrate aquí</a></p>
   </main>
 
-  <!-- Firebase SDKs -->
- <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js"></script>
-
+  <!-- Firebase SDKs compatibles con navegador -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-auth-compat.js"></script>
 
   <!-- Script de configuración e inicio de sesión -->
   <script src="/login/login.js"></script>
