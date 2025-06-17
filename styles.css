@@ -584,6 +584,18 @@ body.dark-mode {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+/* --- Modo oscuro --- */
+body.dark-mode .dropdown-menu {
+  background: var(--color-nav-fondo-oscuro);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
 
+body.dark-mode .menu-item {
+  color: var(--color-texto-oscuro);
+}
 
-
+body.dark-mode .menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-texto-hover-oscuro);
+}
