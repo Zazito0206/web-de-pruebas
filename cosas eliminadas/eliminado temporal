@@ -1,0 +1,38 @@
+   
+   
+   <!-- Codigo de busqueda-->
+   <form id="form-busqueda" class="search-bar">
+       <input id="busqueda-input" type="text" placeholder="Buscar por título o autor..." autocomplete="off">
+       <button type="submit">Buscar</button>
+    </form>
+
+
+    <!-- nav original -->
+         <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="#">Historias</a>
+        <a href="#">Géneros</a>
+        <a href="sobre-nosotros/index.html">Sobre Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+
+
+    <!--- js que lee books.json --->
+        fetch('books.json')
+      .then(res => res.json())
+      .then(data => {
+        librosGenero = data.books.filter(libro => libro.genres.includes(genero));
+
+        librosGenero.forEach(libro => {
+          const link = document.createElement('a');
+          link.classList.add('libro');
+          link.setAttribute('title', libro.title);
+
+          const slug = slugify(libro.title);
+          link.href = `/libros/${slug}/info/index.html`;
+
+          link.innerHTML = `
+            <img src="${libro.cover}" alt="Portada de ${libro.title}" />
+            <h4>${libro.title}</h4>
+            
+          `;
