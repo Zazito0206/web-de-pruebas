@@ -243,4 +243,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // --- Aplicar estilos uniformes ---
+  function aplicarEstiloUniforme(elementos, estilo) {
+    elementos.forEach(elemento => {
+      Object.assign(elemento.style, estilo);
+    });
+  }
+
+  const perfil = document.getElementById('perfil');
+  const notificaciones = document.getElementById('notificaciones');
+  const modoOscuro = document.getElementById('toggle-dark-mode-menu');
+  const cerrarSesion = document.getElementById('cerrar-sesion');
+
+  const estiloComun = {
+    padding: '10px',
+    margin: '5px',
+    borderRadius: '5px',
+    backgroundColor: '#f0f0f0',
+    color: '#333',
+    cursor: 'pointer',
+    textAlign: 'center',
+    display: 'inline-block'
+  };
+
+  aplicarEstiloUniforme([perfil, notificaciones, modoOscuro, cerrarSesion], estiloComun);
+
 });
