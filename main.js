@@ -13,7 +13,6 @@ if (!firebase.apps.length) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
   // --- Banner con cierre temporal cada 30 minutos ---
   const banner = document.getElementById('beta-banner');
   const closeBtn = document.getElementById('close-banner');
@@ -172,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Autenticación ---
   const loginBtn = document.getElementById('login-btn');
   const userPhoto = document.getElementById('user-photo');
-  const userMenuContainer = document.getElementById('user-menu-container');
   const auth = firebase.auth();
 
   loginBtn?.addEventListener('click', () => {
@@ -183,18 +181,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (user) {
       loginBtn.style.display = "none";
       userPhoto.style.display = "inline-block";
-      userMenuContainer.style.display = "inline-block";
-
-      if (user.photoURL) {
-        userPhoto.src = user.photoURL;
-      } else {
-        userPhoto.src = "/images/default-user.png";
-      }
+      userPhoto.src = user.photoURL;
     } else {
       loginBtn.style.display = "inline-block";
       userPhoto.style.display = "none";
-      userMenuContainer.style.display = "none";
     }
+  });
+
+  // --- Dropdown del usuario ---
+  const userMenuContainer = document.getElementById('user-menu-container');
+  const userDropdown = document.getElementById('user-dropdown');
+  const dropdownDarkModeBtn = document.getElementById('dropdown-dark-mode');
+  const logoutBtn = document.getElementById('logout-btn');
+
+  userPhoto?.addEventListener('click', () => {
+    const isVisible = userDropdown.style.display === 'block';
+    userDropdown.style.display = isVisible ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!userMenuContainer.contains(e.target)) {
+      userDropdown.style.display = 'none';
+    }
+  });
+
+  dropdownDarkModeBtn?.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('dark-mode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+  });
+
+  logoutBtn?.addEventListener('click', () => {
+    firebase.auth().signOut().then(() => {
+      location.href = '/';
+    }).catch((error) => {
+      console.error('Error al cerrar sesión:', error);
+    });
   });
 
 });
