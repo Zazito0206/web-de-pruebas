@@ -546,19 +546,62 @@ body.dark-mode {
   border: 2px solid #0a3d62;
 }
 
-/* Menú desplegable usuario */
+/* --- MENÚ DESPLEGABLE USUARIO --- */
 .dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   right: 0;
-  background: var(--color-fondo);
-  border: 1px solid #ccc;
-  padding: 10px;
+  background: var(--color-nav-fondo);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 6px 0;
   z-index: 100;
+  min-width: 180px;
+  transition: background 0.3s ease;
 }
+
 .dropdown-menu.visible {
   display: block;
+}
+
+/* Estilo para ítems del menú (enlace o botón) */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+  color: var(--color-texto);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Modo oscuro: fondo y bordes del menú */
+body.dark-mode .dropdown-menu {
+  background: var(--color-nav-fondo);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Modo oscuro: ítems del menú */
+body.dark-mode .menu-item {
+  color: var(--color-texto);
+}
+
+body.dark-mode .menu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 
