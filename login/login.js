@@ -47,4 +47,18 @@ if (googleBtn) {
   });
 }
 
-// Login con Facebook (más adelante se activará)
+// Login con Facebook
+const facebookBtn = document.getElementById('facebook-login');
+if (facebookBtn) {
+  facebookBtn.addEventListener('click', () => {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth.signInWithPopup(provider)
+      .then(() => {
+        alert('¡Inicio de sesión exitoso con Facebook!');
+        window.location.href = '/index.html';
+      })
+      .catch(error => {
+        alert('Error con Facebook: ' + error.message);
+      });
+  });
+}
