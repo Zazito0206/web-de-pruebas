@@ -31,21 +31,16 @@
     <a href="/contacto/contacto.html">Contáctanos</a>
 
     <!-- Botón de iniciar sesión -->
-  <!-- Se mostrará según el estado de login -->
-  <a id="btn-login" class="btn-login" style="display: none;">Iniciar sesión</a>
-
-  <div id="user-menu" class="user-info" style="display: none;">
-    <img id="user-photo" class="user-photo" src="" alt="Foto de perfil">
-    <div id="dropdown-menu" class="dropdown hidden">
-      <ul>
-        <li><a href="#">Perfil</a></li>
-        <li><a href="#">Notificaciones</a></li>
-        <li><button id="toggle-dark-mode" class="dark-mode-toggle">Modo oscuro</button></li>
-        <li><button id="btn-logout">Cerrar sesión</button></li>
-      </ul>
-    </div>
+ <div id="user-info" style="display: none;">
+  <img id="user-photo" src="" alt="Usuario" />
+  <div id="user-dropdown" class="dropdown-menu">
+    <button id="opcion-perfil">Perfil</button>
+    <button id="opcion-notificaciones">Notificaciones</button>
+    <button id="opcion-darkmode">Modo oscuro</button>
+    <button id="opcion-logout">Cerrar sesión</button>
   </div>
 </div>
+
 
 
   <!-- Contenedor de resultados de búsqueda (si se usa en el futuro) -->
