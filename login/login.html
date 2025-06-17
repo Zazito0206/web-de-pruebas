@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Iniciar Sesión</title>
   <link rel="stylesheet" href="/login/login.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <main class="login-container">
@@ -13,20 +14,28 @@
     <form id="login-form">
       <input type="email" id="email" placeholder="Correo electrónico" required />
       <input type="password" id="password" placeholder="Contraseña" required />
-      <button type="submit">Entrar</button>
+      <button type="submit">Iniciar sesión</button>
     </form>
 
-    <button type="button" id="google-login">Entrar con Google</button>
-    <button type="button" id="facebook-login">Entrar con Facebook</button>
+    <div class="divider">O inicia con</div>
+
+    <div class="social-login">
+      <button type="button" id="google-login">
+        <img src="/images/google-icon.png" alt="Google" /> Google
+      </button>
+      <button type="button" id="facebook-login">
+        <img src="/images/facebook-icon.png" alt="Facebook" /> Facebook
+      </button>
+    </div>
 
     <p>¿No tienes cuenta? <a href="#" id="registrarse">Regístrate aquí</a></p>
   </main>
 
-  <!-- Firebase SDKs compatibles con navegador -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-auth-compat.js"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js"></script>
 
-  <!-- Script de configuración e inicio de sesión -->
+  <!-- Script de inicio de sesión -->
   <script src="/login/login.js"></script>
 </body>
 </html>
