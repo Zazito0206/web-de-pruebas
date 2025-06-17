@@ -546,7 +546,29 @@ body.dark-mode {
   border: 2px solid #0a3d62;
 }
 
-/* --- menu al tocar la foto ---*/
+/* drop iconos */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-item:hover {
+  background: #f0f0f0;
+}
+
+
 /* Menú desplegable usuario */
 .dropdown-menu {
   display: none;
