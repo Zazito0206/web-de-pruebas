@@ -535,7 +535,7 @@ body.dark-mode {
 .user-info {
   display: flex;
   align-items: center;
-  margin-left: 1rem;
+  cursor: pointer;
 }
 
 .user-photo {
