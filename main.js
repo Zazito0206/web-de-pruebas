@@ -171,51 +171,59 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Autenticación ---
   const loginBtn = document.getElementById('login-btn');
   const userPhoto = document.getElementById('user-photo');
+  const userMenuContainer = document.getElementById('user-menu-container');
   const auth = firebase.auth();
 
+  // Redirigir a login.html al hacer clic en el botón
   loginBtn?.addEventListener('click', () => {
     window.location.href = "/login/login.html";
   });
 
+  // Mostrar u ocultar elementos según el estado de autenticación
   auth.onAuthStateChanged((user) => {
     if (user) {
       loginBtn.style.display = "none";
+      userPhoto.src = user.photoURL || "/images/default-avatar.png";
       userPhoto.style.display = "inline-block";
-      userPhoto.src = user.photoURL;
+      if (userMenuContainer) {
+        userMenuContainer.style.display = "flex"; // usa "flex" o "inline-flex" según diseño
+      }
     } else {
       loginBtn.style.display = "inline-block";
       userPhoto.style.display = "none";
+      if (userMenuContainer) {
+        userMenuContainer.style.display = "none";
+      }
     }
   });
 
-  // --- Dropdown del usuario ---
-  const userMenuContainer = document.getElementById('user-menu-container');
-  const userDropdown = document.getElementById('user-dropdown');
-  const dropdownDarkModeBtn = document.getElementById('dropdown-dark-mode');
-  const logoutBtn = document.getElementById('logout-btn');
+  // --- Dropdown toggle al hacer clic en la foto ---
+  if (userPhoto) {
+    const dropdown = document.getElementById('user-dropdown');
+    userPhoto.addEventListener('click', () => {
+      dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    });
 
-  userPhoto?.addEventListener('click', () => {
-    const isVisible = userDropdown.style.display === 'block';
-    userDropdown.style.display = isVisible ? 'none' : 'block';
-  });
+    // Cerrar dropdown al hacer clic fuera
+    document.addEventListener('click', (event) => {
+      if (!userMenuContainer.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+  }
 
-  document.addEventListener('click', (e) => {
-    if (!userMenuContainer.contains(e.target)) {
-      userDropdown.style.display = 'none';
-    }
-  });
-
-  dropdownDarkModeBtn?.addEventListener('click', () => {
+  // --- Botón dentro del dropdown para modo oscuro ---
+  const dropdownDarkBtn = document.getElementById('dropdown-dark-mode');
+  dropdownDarkBtn?.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     localStorage.setItem('dark-mode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
   });
 
+  // --- Logout ---
+  const logoutBtn = document.getElementById('logout-btn');
   logoutBtn?.addEventListener('click', () => {
     firebase.auth().signOut().then(() => {
-      location.href = '/';
-    }).catch((error) => {
-      console.error('Error al cerrar sesión:', error);
+      window.location.href = "/"; // Redirigir al index tras cerrar sesión
     });
   });
-
 });
