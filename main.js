@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('beta-banner');
   const closeBtn = document.getElementById('close-banner');
   const storageKey = 'betaBannerClosedAt';
-  const hideDuration = 30 * 60 * 1000;
+  const hideDuration = 30 * 60 * 1000; // 30 minutos en ms
 
   function fadeIn(element) {
     element.style.opacity = 0;
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // --- Fin banner ---
 
+  // Función para crear slugs URL friendly para rutas
   function slugify(text) {
     return text.toString().toLowerCase()
       .normalize('NFD')
@@ -69,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .trim();
   }
 
+  // Función que crea un carrusel para un género
   function crearCarrusel(genero) {
     const carousel = document.getElementById(`carousel-${genero}`);
     const indicadores = document.getElementById(`indicadores-${genero}`);
@@ -156,8 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Dark mode desde menú ---
+  // --- Toggle modo oscuro ---
+  const toggleBtn = document.getElementById('toggle-dark-mode');
   const body = document.body;
+
   const savedMode = localStorage.getItem('dark-mode');
   if (savedMode === 'enabled') {
     body.classList.add('dark-mode');
@@ -177,10 +181,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleDarkMode);
+  }
+
+  // --- Crear carruseles para géneros ---
   crearCarrusel('recientes');
   crearCarrusel('populares');
 
-  // --- Firebase Auth ---
+  // --- Firebase Auth: mostrar botón login o avatar ---
   const firebaseConfig = {
     apiKey: "AIzaSyCxyeiuOBCTwY1-Avq5TfOEa7HePsb2s9A",
     authDomain: "escritores-en-proceso-ep.firebaseapp.com",
@@ -197,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLogin = document.getElementById("btn-login");
     const userInfo = document.getElementById("user-info");
     const userPhoto = document.getElementById("user-photo");
-    const dropdownMenu = document.getElementById("user-menu");
 
     if (user) {
       if (btnLogin) btnLogin.style.display = "none";
@@ -211,32 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
           : user.email[0].toUpperCase();
         userPhoto.src = `https://via.placeholder.com/40x40.png?text=${initials}`;
       }
-
-      userPhoto.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (dropdownMenu.style.display === "block") {
-          dropdownMenu.style.display = "none";
-        } else {
-          dropdownMenu.style.display = "block";
-        }
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!userInfo.contains(e.target)) {
-          dropdownMenu.style.display = "none";
-        }
-      });
-
-      document.getElementById("toggle-dark-mode-menu").addEventListener('click', () => {
-        toggleDarkMode();
-      });
-
-      document.getElementById("cerrar-sesion").addEventListener('click', () => {
-        auth.signOut().then(() => {
-          location.reload();
-        });
-      });
-
     } else {
       if (btnLogin) btnLogin.style.display = "inline-block";
       if (userInfo) userInfo.style.display = "none";
