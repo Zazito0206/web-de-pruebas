@@ -29,23 +29,28 @@
     <a href="/contacto/contacto.html">Contáctanos</a>
 
     <div id="auth-container">
+      <!-- Botón de inicio de sesión -->
       <button id="login-btn">Iniciar sesión</button>
 
+      <!-- Foto de usuario y dropdown -->
       <div id="user-menu-container" style="position: relative; display: none;">
-        <img id="user-photo" style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer;" />
+        <img
+          id="user-photo"
+          style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer;"
+          alt="Foto del usuario"
+        />
 
-        <div id="user-dropdown" class="user-dropdown" style="display: none;">
-          <ul>
+        <!-- Menú desplegable -->
+        <div id="user-dropdown" class="user-dropdown" style="display: none; position: absolute; top: 50px; right: 0; background: white; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 100;">
+          <ul style="list-style: none; padding: 0; margin: 0;">
             <li><a href="/perfil.html">👤 Perfil</a></li>
             <li><a href="/notificaciones.html">🔔 Notificaciones</a></li>
-            <li><button id="dropdown-dark-mode">🌓 Modo Oscuro</button></li>
-            <li><button id="logout-btn">🚪 Cerrar sesión</button></li>
+            <li><button id="dropdown-dark-mode" style="width: 100%; border: none; background: none; padding: 10px; text-align: left;">🌓 Modo Oscuro</button></li>
+            <li><button id="logout-btn" style="width: 100%; border: none; background: none; padding: 10px; text-align: left;">🚪 Cerrar sesión</button></li>
           </ul>
         </div>
       </div>
     </div>
-
-    <button id="toggle-dark-mode" aria-label="Alternar modo oscuro">🌓</button>
   </div>
   <div id="resultadosBusqueda" class="resultados-busqueda"></div>
 </nav>
