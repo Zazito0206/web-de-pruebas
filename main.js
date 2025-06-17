@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('beta-banner');
   const closeBtn = document.getElementById('close-banner');
   const storageKey = 'betaBannerClosedAt';
-  const hideDuration = 30 * 60 * 1000; // 30 minutos en ms
+  const hideDuration = 30 * 60 * 1000;
 
   function fadeIn(element) {
     element.style.opacity = 0;
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // --- Fin banner ---
 
-  // Función para crear slugs URL friendly para rutas
   function slugify(text) {
     return text.toString().toLowerCase()
       .normalize('NFD')
@@ -70,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .trim();
   }
 
-  // Función que crea un carrusel para un género
   function crearCarrusel(genero) {
     const carousel = document.getElementById(`carousel-${genero}`);
     const indicadores = document.getElementById(`indicadores-${genero}`);
@@ -160,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Dark mode desde menú ---
   const body = document.body;
-
   const savedMode = localStorage.getItem('dark-mode');
   if (savedMode === 'enabled') {
     body.classList.add('dark-mode');
@@ -180,11 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Crear carruseles para géneros ---
   crearCarrusel('recientes');
   crearCarrusel('populares');
 
-  // --- Firebase Auth: mostrar botón login o avatar ---
+  // --- Firebase Auth ---
   const firebaseConfig = {
     apiKey: "AIzaSyCxyeiuOBCTwY1-Avq5TfOEa7HePsb2s9A",
     authDomain: "escritores-en-proceso-ep.firebaseapp.com",
@@ -201,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLogin = document.getElementById("btn-login");
     const userInfo = document.getElementById("user-info");
     const userPhoto = document.getElementById("user-photo");
-    const dropdownMenu = document.getElementById("user-dropdown");
+    const dropdownMenu = document.getElementById("user-menu");
 
     if (user) {
       if (btnLogin) btnLogin.style.display = "none";
@@ -216,25 +212,26 @@ document.addEventListener('DOMContentLoaded', () => {
         userPhoto.src = `https://via.placeholder.com/40x40.png?text=${initials}`;
       }
 
-      // Mostrar/ocultar menú al hacer clic en la foto
-      userPhoto.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('visible');
+      userPhoto.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (dropdownMenu.style.display === "block") {
+          dropdownMenu.style.display = "none";
+        } else {
+          dropdownMenu.style.display = "block";
+        }
       });
 
-      // Opciones del menú
-      document.getElementById("opcion-perfil").addEventListener('click', () => {
-        window.location.href = "/perfil/index.html";
+      document.addEventListener('click', (e) => {
+        if (!userInfo.contains(e.target)) {
+          dropdownMenu.style.display = "none";
+        }
       });
 
-      document.getElementById("opcion-notificaciones").addEventListener('click', () => {
-        alert("Aquí irán las notificaciones.");
-      });
-
-      document.getElementById("opcion-darkmode").addEventListener('click', () => {
+      document.getElementById("toggle-dark-mode-menu").addEventListener('click', () => {
         toggleDarkMode();
       });
 
-      document.getElementById("opcion-logout").addEventListener('click', () => {
+      document.getElementById("cerrar-sesion").addEventListener('click', () => {
         auth.signOut().then(() => {
           location.reload();
         });
