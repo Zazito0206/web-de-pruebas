@@ -31,23 +31,23 @@
     <a href="/contacto/contacto.html">Contáctanos</a>
 
     <!-- Botón de iniciar sesión -->
-    <a href="/login/login.html" id="btn-login" class="btn-login">Iniciar sesión</a>
+   <div id="auth-section">
+  <!-- Se mostrará según el estado de login -->
+  <a id="btn-login" class="btn-login" style="display: none;">Iniciar sesión</a>
 
-    <!-- Info del usuario con menú -->
-    <div id="user-info" class="user-info" style="display: none; position: relative;">
-      <img id="user-photo" class="user-photo" src="" alt="Usuario" />
-
-      <!-- Menú desplegable del usuario -->
-      <div id="user-menu" class="user-menu" style="display: none;">
-        <ul>
-          <li><a href="/perfil/">Perfil</a></li>
-          <li><a href="/notificaciones/">Notificaciones</a></li>
-          <li><button id="toggle-dark-mode-menu">🌓 Modo oscuro</button></li>
-          <li><button id="cerrar-sesion">Cerrar sesión</button></li>
-        </ul>
-      </div>
+  <div id="user-menu" class="user-info" style="display: none;">
+    <img id="user-photo" class="user-photo" src="" alt="Foto de perfil">
+    <div id="dropdown-menu" class="dropdown hidden">
+      <ul>
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Notificaciones</a></li>
+        <li><button id="toggle-dark-mode" class="dark-mode-toggle">Modo oscuro</button></li>
+        <li><button id="btn-logout">Cerrar sesión</button></li>
+      </ul>
     </div>
   </div>
+</div>
+
 
   <!-- Contenedor de resultados de búsqueda (si se usa en el futuro) -->
   <div id="resultadosBusqueda" class="resultados-busqueda"></div>
