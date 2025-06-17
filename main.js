@@ -158,8 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Toggle modo oscuro ---
-  const toggleBtn = document.getElementById('toggle-dark-mode');
+  // --- Dark mode desde menú ---
   const body = document.body;
 
   const savedMode = localStorage.getItem('dark-mode');
@@ -179,10 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       localStorage.setItem('dark-mode', 'disabled');
     }
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', toggleDarkMode);
   }
 
   // --- Crear carruseles para géneros ---
@@ -206,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLogin = document.getElementById("btn-login");
     const userInfo = document.getElementById("user-info");
     const userPhoto = document.getElementById("user-photo");
+    const dropdownMenu = document.getElementById("user-dropdown");
 
     if (user) {
       if (btnLogin) btnLogin.style.display = "none";
@@ -219,6 +215,31 @@ document.addEventListener('DOMContentLoaded', () => {
           : user.email[0].toUpperCase();
         userPhoto.src = `https://via.placeholder.com/40x40.png?text=${initials}`;
       }
+
+      // Mostrar/ocultar menú al hacer clic en la foto
+      userPhoto.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('visible');
+      });
+
+      // Opciones del menú
+      document.getElementById("opcion-perfil").addEventListener('click', () => {
+        window.location.href = "/perfil/index.html";
+      });
+
+      document.getElementById("opcion-notificaciones").addEventListener('click', () => {
+        alert("Aquí irán las notificaciones.");
+      });
+
+      document.getElementById("opcion-darkmode").addEventListener('click', () => {
+        toggleDarkMode();
+      });
+
+      document.getElementById("opcion-logout").addEventListener('click', () => {
+        auth.signOut().then(() => {
+          location.reload();
+        });
+      });
+
     } else {
       if (btnLogin) btnLogin.style.display = "inline-block";
       if (userInfo) userInfo.style.display = "none";
