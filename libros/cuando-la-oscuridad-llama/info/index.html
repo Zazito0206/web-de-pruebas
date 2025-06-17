@@ -24,13 +24,33 @@
       <div class="datos">
         <p class="author" id="author"></p>
         <p class="fecha" id="fecha"></p>
-        <p class="generos" id="generos"></p> <!-- Nuevo -->
+        <p class="generos" id="generos"></p>
         <p class="descripcion" id="descripcion"></p>
       </div>
     </div>
     <div id="capitulos-container" class="capitulos-container"></div>
   </main>
 
+  <!-- Script de información del libro -->
   <script src="/libros/css,js/info.js"></script>
+
+  <!-- Scripts de Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCxyeiuOBCTwY1-Avq5TfOEa7HePsb2s9A",
+      authDomain: "escritores-en-proceso-ep.firebaseapp.com",
+      projectId: "escritores-en-proceso-ep",
+      storageBucket: "escritores-en-proceso-ep.firebasestorage.app",
+      messagingSenderId: "1068751834388",
+      appId: "1:1068751834388:web:2cc1b82d4e15db47970601"
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </body>
 </html>
